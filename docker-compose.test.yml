@@ -1,0 +1,27 @@
+services:
+  nestjs_api_test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=test
+      - DATABASE_USER=admin
+      - DATABASE_PASS=root
+      - DATABASE_HOST=mysql_db_test
+      - DATABASE_NAME=nestjs_amazonas_test
+      - JWT_SECRET_TOKEN=mysecret
+    volumes:
+      - ./src:/usr/src/app/src
+  mysql_db_test:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=nestjs_amazonas_test
+      - MYSQL_TCP_PORT=3306
