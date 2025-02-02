@@ -41,12 +41,15 @@ Handles user accounts and addresses.
 - `updateUserAddress`: Updates an existing user address.
 - `listUserAddress`: Lists all addresses of a user.
 
-## 🔐 Authentication Module
+## 🔐 Authentication & Security Module
 
 Implements security features with JWT authentication.
 
 - `signUp`: Creates a new user account.
 - `signIn`: Authenticates a user and issues a JWT token.
+- **Role-Based Security**: The application implements security based on roles (`ADMIN` and `USER`). The first user created will be automatically elevated to `ADMIN`.
+- **Password Hashing**: User passwords are securely stored using `argon2`, ensuring better protection against brute-force attacks.
+- **JWT-Based Authentication**: The entire authentication system relies on JSON Web Tokens (JWT) to manage sessions securely.
 
 ## 🛒 Product Module
 
@@ -63,6 +66,9 @@ Manages orders and transactions.
 
 - `listUserOrders`: Lists all orders placed by a user.
 - `createOrder`: Creates a new order.
+  - Receives an address and a list of products.
+  - Automatically calculates the total value of the purchase.
+  - Verifies if the requested products are in stock before completing the order.
 
 ## 🏗️ Database Entities
 
@@ -116,19 +122,17 @@ $ cd graphql-nest-store
 $ npm run docker:build:test
 ```
 
-# 🎮 Accessing Apollo Playground
+# 🎮 Accessing Apollo GraphQL Playground
 
-To access the Apollo GraphQL Playground, open your browser and go to:
+Once the application is running, you can access the **Apollo GraphQL Playground** at:
 
-```
-http://localhost:3000/graphql
-```
+[http://localhost:3000/graphql](http://localhost:3000/graphql)
 
-This interface allows you to explore the API, execute queries, and test mutations interactively.
+This interface allows you to interact with the GraphQL API, run queries, and test mutations easily.
 
 # 📜 License
 
-Released in 2025.
+Released in 2024.
 
 If you found this project useful, consider giving it a ⭐️!
 
