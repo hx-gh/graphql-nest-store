@@ -6,8 +6,8 @@ import { OrderProductInput } from './order-product.input';
 export class CreateOrder {
   @Field(() => [OrderProductInput])
   @IsArray()
-  @ValidateNested({ each: true }) // Valida cada item do array
-  @Type(() => OrderProductInput) // Converte os objetos corretamente
+  @ValidateNested({ each: true })
+  @Type(() => OrderProductInput)
   products: OrderProductInput[];
   @Field()
   @IsNumber()

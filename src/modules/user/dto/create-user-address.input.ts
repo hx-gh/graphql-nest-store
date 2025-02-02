@@ -5,7 +5,7 @@ import { BrazilStates } from '../entities/brazil-states.enum';
 
 @InputType()
 export class CreateUserAddress implements IUserAddress {
-  @IsString({ message: 'O valor esperado deve ser do tipo string' })
+  @IsString()
   @Field()
   street: string;
   @IsNumber()
